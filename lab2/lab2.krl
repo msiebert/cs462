@@ -12,7 +12,7 @@ ruleset Lab2 {
 	}
 	
 	rule HelloWorld {
-		select when web pageview
+		select when pageview ".*"
 		always {
 			notify("Hello World");
 		}
