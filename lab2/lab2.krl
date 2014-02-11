@@ -36,13 +36,10 @@ ruleset a2293x2 {
 			};
 
 			query = page:url("query");
-			count = query.extract(re#(&|^)name=([^&]+)#).length();
 			name = getName(query);
 		}
 		{
 			notify("Hello", "Hello " + name);
-			notify("Count", count);
-			notify("Query", query);
 		}
 	}
 }
