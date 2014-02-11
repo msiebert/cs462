@@ -1,23 +1,26 @@
-ruleset Lab2 {
+ruleset a2293x2 {
 	meta {
 		name "Lab2"
 		description <<
-			Lab2 for CS462
+			
 		>>
-		author "Mark Siebert"
+		author "mark.jiali.siebert"
 		logging off
 	}
+
+	dispatch {
+		// domain "exampley.com"
+	}
+
 	global {
 
 	}
-	
-	rule HelloWorld {
-		select when pageview
+
+	rule first_rule {
+		select when pageview ".*" setting ()
 		pre {
-			x = 10;
+		
 		}
-		if (x > 5) then {
-			notify("Hello World");
-		}
+		notify("Hello World", "This is a sample rule.");
 	}
 }
