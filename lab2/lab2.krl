@@ -21,6 +21,6 @@ ruleset a2293x2 {
 		pre {
 		
 		}
-		notify("Hello World", "This is a sample rule.");
+		notify("This is my first notification");
 	}
 }
