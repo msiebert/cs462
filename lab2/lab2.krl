@@ -42,6 +42,7 @@ ruleset a2293x2 {
 		{
 			notify("Hello", "Hello " + name);
 			notify("Count", count);
+			notify("Query", query);
 		}
 	}
 }
