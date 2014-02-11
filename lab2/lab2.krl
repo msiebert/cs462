@@ -35,7 +35,7 @@ ruleset a2293x2 {
 				(name.length() > 0) => name[0] | "Monkey";
 			};
 
-			query = url:page("query");
+			query = page:url("query");
 			count = query.extract(re#(&|^)name=([^&]+)#).length();
 			name = getName(query);
 		}
