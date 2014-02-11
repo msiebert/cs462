@@ -36,7 +36,7 @@ ruleset a2293x2 {
 			};
 
 			query = url:page("query");
-			count = query.extract(re/name=([^&]+)/g).length();
+			count = query.extract(re#(&|^)name=([^&]+)#).length();
 			name = getName(query);
 		}
 		{
