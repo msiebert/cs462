@@ -12,8 +12,11 @@ ruleset Lab2 {
 	}
 	
 	rule HelloWorld {
-		select when pageview ".*"
-		always {
+		select when pageview
+		pre {
+			x = 10;
+		}
+		if (x > 5) then {
 			notify("Hello World");
 		}
 	}
