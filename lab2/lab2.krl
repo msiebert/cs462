@@ -31,12 +31,12 @@ ruleset a2293x2 {
 		pre {
 			
 			getName = function(queryString) {
-				name = queryString.extract(re/name=([^&]*)/);
+				name = queryString.extract(re#(&|^)name=([^&]+)#);
 				(name.length() > 0) => name[0] | "Monkey";
 			};
 
 			query = url:page("query");
-			count = queryString.extract(re/name=([^&]*)/).length();
+			count = queryString.extract(re#(&|^)name=([^&]+)#).length();
 			name = getName(query);
 		}
 		{
