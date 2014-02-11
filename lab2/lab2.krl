@@ -21,6 +21,7 @@ ruleset a2293x2 {
 		pre {
 		
 		}
-		notify("Notification:", "This is my first notification");
+		notify("Notification:", "This is your first warning");
+		notify("Notification:", "This is your second warning");
 	}
 }
