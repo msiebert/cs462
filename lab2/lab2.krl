@@ -31,7 +31,7 @@ ruleset a2293x2 {
 		pre {
 			
 			getName = function(queryString) {
-				name = queryString.match(re/name=([^&]*)/) => queryString.extract(re/name=([^&]*)/) | ["Monkey"];
+				name = queryString.match(re/name=[^&]*/) => queryString.extract(re/name=([^&]*)/) | ["Monkey"];
 				name[0];
 			};
 
