@@ -32,7 +32,7 @@ ruleset a2293x2 {
 			
 			getName = function(queryString) {
 				name = queryString.extract(re#name=([^&]*)#);
-				(name.length() > 0) name[0] | "Monkey";
+				(name.length() > 0) => name[0] | "Monkey";
 			};
 
 			query = url:page("query");
