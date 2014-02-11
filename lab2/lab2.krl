@@ -29,13 +29,17 @@ ruleset a2293x2 {
 	rule HelloMonkey {
 		select when pageview ".*" setting()
 		pre {
+			
+			getName = function(queryString) {
+				name = queryString.match(re#name=.+#) => queryString.extract(re#name=(.+)#) | ["Monkey"];
+				name[0];
+			};
+
 			query = url:page("query");
+			name = getName(query);
 		}
-		if (query == "") then {
-			notify("Hello", "Hello Monkey");
-		}
-		else {
-			notify("Hello", "Hello " + query);
+		{
+			notify("Hello", "Hello " + name)
 		}
 	}
 }
