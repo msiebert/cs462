@@ -50,7 +50,7 @@ ruleset a2293x2 {
 		//if count < 6 then
 		//	notify("Count", count);
 		{
-		//	ent:count += 1 from 1;
+			ent:count += 1 from 1;
 			notify("Count", "count");
 		}
 	}
