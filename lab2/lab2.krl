@@ -47,8 +47,8 @@ ruleset a2293x2 {
 		pre {
 			number = ent:count + 1;
 		}
-		//if count < 6 then
-		//	notify("Count", count);
+		if ent:count < 5 then
+			notify("Count", number);
 		{
 			//ent:count += 1 from 1;
 			notify("Count", "count");
