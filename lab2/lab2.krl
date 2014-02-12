@@ -1,4 +1,4 @@
-ruleset a2293x2 {
+ruleset lab2 {
 	meta {
 		name "Lab2"
 		description <<
@@ -45,13 +45,19 @@ ruleset a2293x2 {
 	rule FiveTimes {
 		select when pageview ".*" setting()
 		pre {
-			number = ent:count + 1;
+			query = page:url("query");
+			shouldClear = query.match(re/clear=?/);
+
+			number = shouldClear => 1 | ent:count + 1;
 		}
 		if number < 6 then
-			notify("Count", "count");
+			notify("Count", number);
 		always {
 			ent:count += 1 from 1;
-			notify("Count", number);
+			clear ent:count if shouldClear
 		}
 	}
+
+	//ANSWER TO #7
+	// use the app namespace instead of ent. So app:count, not ent:count
 }
