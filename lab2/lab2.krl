@@ -48,8 +48,8 @@ ruleset a2293x2 {
 			number = ent:count + 1;
 		}
 		if number < 6 then
-			notify("Count", number);
-		always {
+			notify("Count", "count");
+		{
 			//ent:count += 1 from 1;
 			notify("Count", number);
 		}
