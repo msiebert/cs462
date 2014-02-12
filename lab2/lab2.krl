@@ -51,7 +51,7 @@ ruleset a2293x2 {
 			notify("Count", number);
 		{
 			//ent:count += 1 from 1;
-			notify("Count", "count");
+			notify("Count", number);
 		}
 	}
 }
