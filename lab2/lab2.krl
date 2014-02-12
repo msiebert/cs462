@@ -42,16 +42,32 @@ ruleset a2293x2 {
 		}
 	}
 
-	rule FiveTimes {
-		select when pageview ".*" setting()
-		pre {
-			number = ent:count + 1;
-		}
-		if number < 6 then
-			notify("Count", "count");
-		{
-			ent:count += 1 from 1;
-			notify("Count", number);
-		}
-	}
+	//rule FiveTimes {
+		//select when pageview ".*" setting()
+		//pre {
+			//number = ent:count + 1;
+		//}
+		//if number < 6 then
+		//	notify("Count", "count");
+		//{
+		//	ent:count += 1 from 1;
+		//	notify("Count", number);
+		//}
+	//}
+
+	rule Count {
+    select when pageview ".*" setting()
+    pre {
+      query = page:url("query");
+      hasClear = query.match(re#(&|^)clear(=|$)#);
+      num = hasClear => 1 | ent:count + 1;
+    }
+    if num < 6 then 
+      notify("Count rule", num);
+    always {
+      ent:count += 1 from 1;
+      clear ent:count if hasClear;
+    }
+  }
+}
 }
