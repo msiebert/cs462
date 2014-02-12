@@ -45,10 +45,10 @@ ruleset a2293x2 {
 	rule FiveTimes {
 		select when pageview ".*" setting()
 		pre {
-
+			count = ent:count + 1
 		}
 		if ent:count < 5 then {
-			notify("Count", ent:count);
+			notify("Count", count);
 			ent:count += 1 from 1;
 		}
 	}
