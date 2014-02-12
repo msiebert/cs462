@@ -47,10 +47,10 @@ ruleset a2293x2 {
 		pre {
 			count = ent:count + 1
 		}
-		if ent:count < 5 then {
+		if count < 6 then
 			notify("Count", count);
+		always {
 			ent:count += 1 from 1;
-		} always {
 			notify("Count", ent:count);
 		}
 	}
