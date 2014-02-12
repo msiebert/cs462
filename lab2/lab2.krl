@@ -29,7 +29,6 @@ ruleset a2293x2 {
 	rule HelloMonkey {
 		select when pageview ".*" setting()
 		pre {
-			
 			getName = function(queryString) {
 				name = queryString.extract(re/name=([^&]+)/g);
 				(name.length() > 0) => name[0] | "Monkey";
@@ -40,6 +39,17 @@ ruleset a2293x2 {
 		}
 		{
 			notify("Hello", "Hello " + name);
+		}
+	}
+
+	rule FiveTimes {
+		select when pageview ".*" setting()
+		pre {
+
+		}
+		if ent:count < 5 then {
+			notify("Count", ent:count);
+			ent:count += 1 from 1;
 		}
 	}
 }
