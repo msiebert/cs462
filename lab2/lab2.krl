@@ -50,6 +50,8 @@ ruleset a2293x2 {
 		if ent:count < 5 then {
 			notify("Count", count);
 			ent:count += 1 from 1;
+		} always {
+			notify("Count", ent:count);
 		}
 	}
 }
