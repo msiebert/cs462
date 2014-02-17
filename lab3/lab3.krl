@@ -39,10 +39,12 @@ ruleset lab3 {
 	rule onclick {
 		select when web submit "#form"
 		pre {
-
+			first = event:attr("first");
+			last = event:attr("last");
 		}
-		{
-			after("#main", "you clicked");
+		fired {
+			set ent:first first;
+			set ent:last last;
 		}
 	}
 }
