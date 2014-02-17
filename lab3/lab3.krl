@@ -46,10 +46,29 @@ ruleset lab3 {
 		pre {
 			first = event:attr("first");
 			last = event:attr("last");
+			username = first + " " + last;
+		}
+		{
+			replace_inner("#username", username);
 		}
 		fired {
 			set ent:first first;
 			set ent:last last;
+		}
+	}
+
+	rule clear_name {
+		select when pageview ".*" setting()
+		pre {
+			query = page:url("query");
+			shouldClear = query.match(re/clear=?/);
+		}
+		if shouldClear then {
+			replace_inner("#username", "");
+			}
+		fired {
+			clear ent:first if shouldClear;
+			clear ent:last if shouldClear;
 		}
 	}
 }
