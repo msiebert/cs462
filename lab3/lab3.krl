@@ -34,7 +34,7 @@ ruleset lab3 {
 
 		}
 		{
-			notify("notification", "you clicked");
+			after("#main", "you clicked");
 		}
 	}
 }
