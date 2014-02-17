@@ -27,4 +27,14 @@ ruleset lab3 {
 			watch("#submit-button", "click");
 		}
 	}
+
+	rule onclick {
+		select when web click "#submit-button"
+		pre {
+
+		}
+		{
+			notify("notification", "you clicked");
+		}
+	}
 }
