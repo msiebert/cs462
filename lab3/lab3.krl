@@ -23,6 +23,7 @@ ruleset lab3 {
 		}
 		{
 			after("#main", "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.");
+			after("#main", "<form><label for='first'>First</label><input type='text' name='first'/><label for='last'>Last</label><input type='text' name='last'><input type='submit' id='submit-button' /></form");
 		}
 	}
 }
