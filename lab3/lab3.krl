@@ -22,7 +22,7 @@ ruleset lab3 {
 
 		}
 		{
-			notify("Hello", "Hello");
+			after("#main", "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.");
 		}
 	}
 }
