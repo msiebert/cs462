@@ -23,13 +23,13 @@ ruleset lab3 {
 		}
 		{
 			after("#main", "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.");
-			after("#main", "<form><label for='first'>First</label><input type='text' name='first'/><br /><label for='last'>Last</label><input type='text' name='last'><br /><input type='button' id='submit-button' /></form>");
-			watch("#submit-button", "click");
+			after("#main", "<form><label for='first'>First</label><input type='text' name='first'/><br /><label for='last'>Last</label><input type='text' name='last'><br /><input type='submit' id='submit-button' /></form>");
+			watch("#submit-button", "submit");
 		}
 	}
 
 	rule onclick {
-		select when web click "#submit-button"
+		select when web submit "#submit-button"
 		pre {
 
 		}
