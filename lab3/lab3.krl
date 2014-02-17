@@ -28,9 +28,14 @@ ruleset lab3 {
 					<input type="submit" />
 				</form>
 			>>;
+			username = (ent:first) => ent:first + " " + ent:last | "";
+			p = <<
+				<p id="username">#{username}</p>
+			>>;
 		}
 		{
 			after("#main", "<strong>In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.</strong>");
+			after("#main", p);
 			after("#main", form);
 			watch("#form", "submit");
 		}
