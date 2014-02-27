@@ -28,12 +28,13 @@ ruleset rotten_tomatoes {
 
 			total = result.pick("$.total").as("num");
 			movie = <<
+				<img src="#{result.pick($.movies[0].poster.thumbnail" style="float:left" />	
 				<h1>#{result.pick("$.movies[0].title")}</h1>
 			>>;
 
 			error = <<
 				<h1>Not Found</h1>
-				<p>Sorry, Rotten Tomatoes does not contain an entry for #{title}</p>
+				<p>Sorry, Rotten Tomatoes does not contain an entry for <strong>#{query}</strong></p>
 			>>;
 
 			(total > 0) => movie | error;
