@@ -30,6 +30,11 @@ ruleset rotten_tomatoes {
 			movie = <<
 				<img src='#{result.pick("$.movies[0]..thumbnail")}' style="float:left" />	
 				<h1>#{result.pick("$.movies[0].title")}</h1>
+				<p>Release Year: #{result.pick("$.movies[0].year")}</p>
+				<p>Synopsis: #{result.pick("$.movies[0].synopsis")}</p>
+				<p>Critic Rating: #{result.pick("$.movies[0]..critics_rating")}</p>
+				<p>Critic Consensus: #{result.pick("$.movies[0].critics_consensus")}</p>
+				<p>Audience Rating: #{result.pick("$.movies[0]..audience_rating")}</p>
 			>>;
 
 			error = <<
@@ -46,10 +51,12 @@ ruleset rotten_tomatoes {
 		pre {
 			html = <<
 				<div id="movie" style="width:70%;margin:auto"></div>
-				<form method="GET" id="form">
-					<input type="text" name="movie-title" placeholder="Movie Title" />
-					<input type="submit" value="Search" />
-				</form>
+				<div>
+					<form method="GET" id="form">
+						<input type="text" name="movie-title" placeholder="Movie Title" />
+						<input type="submit" value="Search" />
+					</form>
+				</div>
 			>>;
 		}
 		{
