@@ -28,7 +28,7 @@ ruleset rotten_tomatoes {
 
 			total = result.pick("$.total").as("num");
 			movie = <<
-				<img src='#{result.pick("$.movies[0].poster.thumbnail")}' style="float:left" />	
+				<img src='#{result.pick("$.movies[0]..thumbnail")}' style="float:left" />	
 				<h1>#{result.pick("$.movies[0].title")}</h1>
 			>>;
 
