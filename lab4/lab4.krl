@@ -9,6 +9,9 @@ ruleset rotten_tomatoes {
 		>>
 		author "mark.jiali.siebert"
 		logging off
+
+		use module a169x701 alias CloudRain
+    use module a41x196  alias SquareTag
 	}
 
 	dispatch {
@@ -60,6 +63,8 @@ ruleset rotten_tomatoes {
 			>>;
 		}
 		{
+			SquareTag:inject_styling();
+      CloudRain:createLoadPanel("Search Movies", {}, html);
 			after("#main", html);
 			watch("#form", "submit");
 		}
