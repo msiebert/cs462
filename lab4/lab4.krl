@@ -65,7 +65,6 @@ ruleset rotten_tomatoes {
 		{
 			SquareTag:inject_styling();
       CloudRain:createLoadPanel("Search Movies", {}, html);
-			after("#main", html);
 			watch("#form", "submit");
 		}
 	}
