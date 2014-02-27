@@ -50,7 +50,7 @@ ruleset rotten_tomatoes {
 	}
 
 	rule show_page {
-		select when pageview ".*" setting()
+		select when web cloudAppSelected
 		pre {
 			html = <<
 				<div id="movie" style="width:70%;margin:auto"></div>
