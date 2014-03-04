@@ -22,7 +22,7 @@ ruleset foursquare {
 	rule hello {
 		select when pageview ".*"
 		pre {
-			test = "{'venue':{'name':'test venue', 'city':'Provo'}, 'shout':'shouting', 'createdAt':'today'}".decode();
+			test = "{\"venue\":{\"name\":\"test venue\", \"city\":\"Provo\"}, \"shout\":\"shouting\", \"createdAt\":\"today\"}".decode();
 			shout = test.pick("$.shout");
 		}
 		{
