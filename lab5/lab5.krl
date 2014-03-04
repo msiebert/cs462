@@ -32,7 +32,7 @@ ruleset foursquare {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
-			//response = event:attr("checkin");
+			response = event:attr("checkin");
 			//stuff = response;
 			//checkin = response.pick("$.checkin").decode();
 			//venue = checkin.pick("$.venue..name");
@@ -46,7 +46,7 @@ ruleset foursquare {
 			//set ent:shout shout;
 			//set ent:createdAt createdAt;
 			//set ent:response stuff;
-			set ent:test "Test";
+			set ent:test "another";
 		}
 	}
 
