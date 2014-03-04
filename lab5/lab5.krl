@@ -19,6 +19,16 @@ ruleset foursquare {
 		
 	}
 
+	rule hello {
+		select when pageview ".*"
+		pre {
+
+		}
+		{
+			notify("Hello", "hello");
+		}
+	}
+
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
