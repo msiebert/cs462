@@ -20,8 +20,9 @@ ruleset foursquare {
 	}
 
 	rule process_fs_checkin {
-		select when foursquare checkin setting(response)
+		select when foursquare checkin
 		pre {
+			response = event:attr("checkin");
 			stuff = response;
 			checkin = response.pick("$.checkin").decode();
 			venue = checkin.pick("$.venue..name");
