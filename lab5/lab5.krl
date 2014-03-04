@@ -22,20 +22,20 @@ ruleset foursquare {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
-			response = event:attr("checkin");
-			stuff = response;
-			checkin = response.pick("$.checkin").decode();
-			venue = checkin.pick("$.venue..name");
-			city = checkin.pick("$.venue..city");
-			shout = checkin.pick("$.shout");
-			createdAt = checkin.pick("$.createdAt");
+			//response = event:attr("checkin");
+			//stuff = response;
+			//checkin = response.pick("$.checkin").decode();
+			//venue = checkin.pick("$.venue..name");
+			//city = checkin.pick("$.venue..city");
+			//shout = checkin.pick("$.shout");
+			//createdAt = checkin.pick("$.createdAt");
 		} 
 		fired {
-			set ent:venue venue;
-			set ent:city city;
-			set ent:shout shout;
-			set ent:createdAt createdAt;
-			set ent:response stuff;
+			//set ent:venue venue;
+			//set ent:city city;
+			//set ent:shout shout;
+			//set ent:createdAt createdAt;
+			//set ent:response stuff;
 			set ent:test "Test";
 		}
 	}
