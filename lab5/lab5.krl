@@ -23,10 +23,10 @@ ruleset foursquare {
 		select when foursquare checkin
 		pre {
 			response = event:attr("checkin");
-			venue = response.pick("$.venue..name").as("str");
-			city = response.pick("$.venue..city").as("str");
-			shout = response.pick("$.shout").as("str");
-			createdAt = response.pick("$.createdAt").as("str");
+			venue = response.pick("$.venue..name").decode();
+			city = response.pick("$.venue..city").decode();
+			shout = response.pick("$.shout").decode();
+			createdAt = response.pick("$.createdAt").decode();
 		} 
 		fired {
 			set ent:venue venue;
