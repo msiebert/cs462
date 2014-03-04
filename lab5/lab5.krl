@@ -36,6 +36,7 @@ ruleset foursquare {
 			set ent:shout shout;
 			set ent:createdAt createdAt;
 			set ent:response stuff;
+			set ent:test "Test";
 		}
 	}
 
