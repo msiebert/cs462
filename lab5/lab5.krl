@@ -33,6 +33,7 @@ ruleset foursquare {
 			set ent:city city;
 			set ent:shout shout;
 			set ent:createdAt createdAt;
+			set ent:test response;
 		}
 	}
 
@@ -46,6 +47,7 @@ ruleset foursquare {
 					<p>City: #{ent:city}</p>
 					<p>Shout: #{ent:shout}</p>
 					<p>Created At: #{ent:createdAt}</p>
+					<p>#{ent:test}</p>
 				</div>
 			>>;
 		}
