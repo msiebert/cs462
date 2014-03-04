@@ -60,7 +60,7 @@ ruleset foursquare {
 					<p>City: #{ent:city}</p>
 					<p>Shout: #{ent:shout}</p>
 					<p>Created At: #{ent:createdAt}</p>
-					<p>#{ent:response}</p>
+					<p>#{ent:test}</p>
 				</div>
 			>>;
 		}
