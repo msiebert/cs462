@@ -33,7 +33,7 @@ ruleset foursquare {
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
-			response = event:attr("checkin").decode();
+			response = event:attr("checkin").pick("$.content").decode();
 			venue = response.pick("$.venue..name");
 			city = response.pick("$.venue..city");
 			shout = response.pick("$.shout");
