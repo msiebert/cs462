@@ -22,6 +22,7 @@ ruleset foursquare {
 	rule process_fs_checkin {
 		select when foursquare checkin setting(response)
 		pre {
+			stuff = response;
 			checkin = response.pick("$.checkin").decode();
 			venue = checkin.pick("$.venue..name");
 			city = checkin.pick("$.venue..city");
@@ -33,6 +34,7 @@ ruleset foursquare {
 			set ent:city city;
 			set ent:shout shout;
 			set ent:createdAt createdAt;
+			set ent:response stuff;
 		}
 	}
 
@@ -46,6 +48,7 @@ ruleset foursquare {
 					<p>City: #{ent:city}</p>
 					<p>Shout: #{ent:shout}</p>
 					<p>Created At: #{ent:createdAt}</p>
+					<p>#{ent:response}</p>
 				</div>
 			>>;
 		}
