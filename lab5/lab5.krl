@@ -23,7 +23,7 @@ ruleset foursquare {
 		select when foursquare checkin
 		pre {
 			response = event:attr("checkin");
-			venue = response.decode().pick("$.venue..name").as("str");
+			venue = response.decode().pick("$.venue.name").as("str");
 			city = response.decode().pick("$.venue..city").as("str");
 			shout = response.decode().pick("$.shout").as("str");
 			createdAt = response.decode().pick("$.createdAt").as("str");
@@ -33,7 +33,6 @@ ruleset foursquare {
 			set ent:city city;
 			set ent:shout shout;
 			set ent:createdAt createdAt;
-			set ent:test response;
 		}
 	}
 
@@ -47,7 +46,6 @@ ruleset foursquare {
 					<p>City: #{ent:city}</p>
 					<p>Shout: #{ent:shout}</p>
 					<p>Created At: #{ent:createdAt}</p>
-					<p>#{ent:test}</p>
 				</div>
 			>>;
 		}
