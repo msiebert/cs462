@@ -19,12 +19,33 @@ ruleset foursquare {
 		
 	}
 
+	rule process_fs_checkin {
+		select when foursquare checkin setting(response)
+		pre {
+			checkin = response.pick("$.checkin").decode();
+			venue = checkin.pick("$.venue..name");
+			city = checkin.pick("$.venue..city");
+			shout = checkin.pick("$.shout");
+			createdAt = checkin.pick("$.createdAt");
+		} 
+		fired {
+			set ent:venue venue;
+			set ent:city city;
+			set ent:shout shout;
+			set ent:createdAt createdAt;
+		}
+	}
+
 	rule display_checkin {
 		select when web cloudAppSelected
 		pre {
 			html = <<
 				<div class="checkin">
 					<h1>Checkin Details</h1>
+					<p>Venue: #{ent:venue}</p>
+					<p>City: #{ent:city}</p>
+					<p>Shout: #{ent:shout}</p>
+					<p>Created At: #{ent:createdAt}</p>
 				</div>
 			>>;
 		}
