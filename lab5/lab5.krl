@@ -19,25 +19,14 @@ ruleset foursquare {
 		
 	}
 
-	rule hello {
-		select when pageview ".*"
-		pre {
-			test = "{\"venue\":{\"name\":\"test venue\", \"city\":\"Provo\"}, \"shout\":\"shouting\", \"createdAt\":\"today\"}".decode();
-			shout = test.pick("$.shout");
-		}
-		{
-			notify("Hello", shout);
-		}
-	}
-
 	rule process_fs_checkin {
 		select when foursquare checkin
 		pre {
 			response = event:attr("checkin").pick("$.content").decode();
-			venue = response.pick("$.venue..name");
-			city = response.pick("$.venue..city");
-			shout = response.pick("$.shout");
-			createdAt = response.pick("$.createdAt");
+			venue = response.pick("$.venue..name").as("str");
+			city = response.pick("$.venue..city").as("str");
+			shout = response.pick("$.shout").as("str");
+			createdAt = response.pick("$.createdAt").as("str");
 		} 
 		fired {
 			set ent:venue venue;
