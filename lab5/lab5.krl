@@ -43,8 +43,7 @@ ruleset foursquare {
 			set ent:city city;
 			set ent:shout shout;
 			set ent:createdAt createdAt;
-			set ent:response stuff;
-			set ent:test "3";
+			set ent:test response;
 		}
 	}
 
