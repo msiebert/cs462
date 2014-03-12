@@ -31,6 +31,7 @@ ruleset location_data {
 					<p>City: #{result{"city"}}</p>
 					<p>Shout: #{result{"shout"}}</p>
 					<p>Created At: #{result{"createdAt"}}</p>
+					<p>#{result}</p>
 				</div>
 			>>;
 		}
