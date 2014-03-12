@@ -28,14 +28,19 @@ ruleset foursquare {
 			shout = response.decode().pick("$.shout").as("str");
 			createdAt = response.decode().pick("$.createdAt").as("str");
 		} 
+		{
 			send_directive(venue) with checkin = venue;
+			emit <<
+				console.log("Rule fired: foursquare checkin")
+			>>;
+		}
 		fired {
 			set ent:venue venue;
 			set ent:city city;
 			set ent:shout shout;
 			set ent:createdAt createdAt;
 
-			raise pds event "new_location_data" attributes {"key": "fs_checkin", "value": {"venue": venue, "city": city, "shout": shout, "createdAt": createdAt}};
+			raise pds event "new_location_data" for b505330x4 with key = "fs_checkin" and value = {"value": {"venue": venue, "city": city, "shout": shout, "createdAt": createdAt}};
 		}
 	}
 
