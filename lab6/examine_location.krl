@@ -27,11 +27,10 @@ ruleset location_data {
 			html = <<
 				<div class="checkin">
 					<h1>Checkin Details</h1>
-					<p>Venue: #{result{"venue"}}</p>
-					<p>City: #{result{"city"}}</p>
-					<p>Shout: #{result{"shout"}}</p>
-					<p>Created At: #{result{"createdAt"}}</p>
-					<p>#{result}</p>
+					<p>Venue: #{result.pick("$..venue")}</p>
+					<p>City: #{result.pick("$..city")}</p>
+					<p>Shout: #{result.pick("$..shout")}</p>
+					<p>Created At: #{result.pick("$..createdAt")}</p>
 				</div>
 			>>;
 		}
