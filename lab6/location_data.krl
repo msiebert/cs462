@@ -24,10 +24,12 @@ ruleset location_data {
 	}
 
 	rule add_location_item {
-		select when pds new_location_data setting(key, value)
+		select when pds new_location_data
 		pre {
-
+			key = event:attr("key");
+			value = event:attr("value");
 		}
+		send_directive(key) with location = value;
 		fired {
 			set ent:mymap{"#{key}"} value;
 		}
