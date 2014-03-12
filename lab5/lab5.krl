@@ -33,6 +33,8 @@ ruleset foursquare {
 			set ent:city city;
 			set ent:shout shout;
 			set ent:createdAt createdAt;
+
+			raise pds event "new_location_data" attributes {"key": "fs_checkin", "value": {"venue": venue, "city": city, "shout": shout, "createdAt": createdAt}};
 		}
 	}
 
