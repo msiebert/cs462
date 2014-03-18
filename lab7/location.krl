@@ -30,6 +30,11 @@ ruleset lab7 {
 			lat = event:attr("lat");
 			long = event:attr("long");
 		}
-		send_directive("test") with latitude = lat and longtitude = long;
+		{
+			send_directive("test") with latitude = lat and longtitude = long;
+			emit <<
+				console.log("Rule fired: foursquare checkin")
+			>>;
+		}
 	}
 }
