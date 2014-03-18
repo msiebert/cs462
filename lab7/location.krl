@@ -1,6 +1,6 @@
 //49C702FC-AEC0-11E3-BC69-45C8E71C24E1
 
-//curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "lat=14.001023&long=143.00405" http://cs.kobj.net/sky/event/49C702FC-AEC0-11E3-BC69-45C8E71C24E1/1/location/current?_rids=
+//curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "lat=14.001023&long=143.00405" http://cs.kobj.net/sky/event/49C702FC-AEC0-11E3-BC69-45C8E71C24E1/1/location/currnt?_rids=b505330x6
 
 ruleset lab7 {
 	meta {
@@ -25,11 +25,11 @@ ruleset lab7 {
 	}
 
 	rule nearby {
-		select when location current
+		select when location currnt
 		pre {
 			lat = event:attr("lat");
 			long = event:attr("long");
 		}
-		send_directive(lat) with latitude = lat;
+		send_directive("test") with latitude = lat and longtitude = long;
 	}
 }
