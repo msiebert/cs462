@@ -24,6 +24,17 @@ ruleset lab7 {
 		
 	}
 
+	rule display {
+		select when pageview ".*" setting ()
+		pre {
+		
+		}
+		{
+			notify("lat", ent:lat);
+			notify("long", ent:long);
+    }
+	}
+
 	rule nearby {
 		select when location currnt
 		pre {
