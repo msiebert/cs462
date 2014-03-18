@@ -9,7 +9,7 @@ ruleset lab7 {
 			
 		>>
 		author "mark.jiali.siebert"
-		logging off
+		logging on
 
 		use module b505330x4 alias Location
 		use module a169x701 alias CloudRain
@@ -31,7 +31,8 @@ ruleset lab7 {
 			long = event:attr("long");
 		}
 		{
-			send_directive("test") with latitude = lat and longtitude = long;
+			send_directive("test") with latitude = "lat";
+			//send_directive("test") with latitude = lat and longtitude = long;
 			emit <<
 				console.log("Rule fired: foursquare checkin")
 			>>;
