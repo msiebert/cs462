@@ -27,10 +27,10 @@ ruleset lab7 {
 	rule display {
 		select when pageview ".*" setting ()
 		pre {
-		
+			result = Location:get_location_data("fs_checkin");
 		}
 		{
-			notify("lat", ent:lat);
+			notify("lat", result);
 			notify("long", ent:long);
     }
 	}
