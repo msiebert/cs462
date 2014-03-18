@@ -30,7 +30,7 @@ ruleset lab7 {
 			result = Location:get_location_data("fs_checkin");
 		}
 		{
-			notify("lat", result);
+			notify("lat", result.pick("$..lat"));
 			notify("long", ent:long);
     }
 	}
