@@ -5,7 +5,7 @@ ruleset location_data {
 			
 		>>
 		author "mark.jiali.siebert"
-		logging off
+		logging on
 
 		provides get_location_data
 
