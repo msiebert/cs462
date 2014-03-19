@@ -19,7 +19,7 @@ ruleset location_data {
 
 	global {
 		get_location_data = function(key) {
-			ent:mymap{key};
+			app:mymap{key};
 		};
 	}
 
@@ -31,7 +31,7 @@ ruleset location_data {
 		}
 		send_directive(key) with location = value;
 		fired {
-			set ent:mymap{"#{key}"} value;
+			set app:mymap{"#{key}"} value;
 		}
 	}
 }
