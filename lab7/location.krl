@@ -30,9 +30,10 @@ ruleset lab7 {
 			result = Location:get_location_data("fs_checkin");
 			lat = result.pick("$..lat");
 			long = result.pick("$..long");
+			has_fired = app:has_fired;
 		}
 		{
-			notify("result", ent:mymap);
+			notify("fired", has_fired);
 			notify("lat", lat);
 			notify("long", long);
     }
@@ -50,6 +51,9 @@ ruleset lab7 {
 			emit <<
 				console.log("Rule fired: foursquare checkin")
 			>>;
+		}
+		fired {
+			set app:has_fired "true";
 		}
 	}
 }
