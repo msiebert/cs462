@@ -28,7 +28,7 @@ ruleset foursquare {
 			shout = response.decode().pick("$.shout").as("str");
 			createdAt = response.decode().pick("$.createdAt").as("str");
 			lat = response.decode().pick("$.venue.location.lat").as("num");
-			lng = resonse.decode().pick("$.venue.location.lng").as("num");
+			lng = response.decode().pick("$.venue.location.lng").as("num");
 		} 
 		{
 			send_directive(venue) with checkin = venue;
