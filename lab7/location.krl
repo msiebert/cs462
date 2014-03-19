@@ -32,7 +32,7 @@ ruleset lab7 {
 			long = result.pick("$..long");
 		}
 		{
-			notify("result", result.as("str"));
+			notify("result", ent:mymap);
 			notify("lat", lat);
 			notify("long", long);
     }
