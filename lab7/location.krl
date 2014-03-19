@@ -28,10 +28,12 @@ ruleset lab7 {
 		select when pageview ".*" setting ()
 		pre {
 			result = Location:get_location_data("fs_checkin");
+			lat = result.pick("$..lat");
+			long = result.pick("$..lng");
 		}
 		{
-			notify("lat", result.pick("$..lat"));
-			notify("lng", result.pick("$..lng"));
+			notify("lat", lat);
+			notify("lng", long);
     }
 	}
 

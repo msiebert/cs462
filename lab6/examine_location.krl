@@ -32,7 +32,7 @@ ruleset location_data {
 					<p>Shout: #{result.pick("$..shout")}</p>
 					<p>Created At: #{result.pick("$..createdAt")}</p>
 					<p>Lat: #{result.pick("$..lat")}</p>
-					<p>Long: #{result}</p>
+					<p>Long: #{result.as("str")}</p>
 				</div>
 			>>;
 		}
