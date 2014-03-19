@@ -29,11 +29,12 @@ ruleset lab7 {
 		pre {
 			result = Location:get_location_data("fs_checkin");
 			lat = result.pick("$..lat");
-			long = result.pick("$..lng");
+			long = result.pick("$..long");
 		}
 		{
+			notify("result", result.as("str"));
 			notify("lat", lat);
-			notify("lng", long);
+			notify("long", long);
     }
 	}
 
