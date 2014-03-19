@@ -31,7 +31,7 @@ ruleset lab7 {
 		}
 		{
 			notify("lat", result.pick("$..lat"));
-			notify("long", result.pick("$..long"));
+			notify("lng", result.pick("$..lng"));
     }
 	}
 
