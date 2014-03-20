@@ -54,4 +54,12 @@ ruleset lab7 {
 			raise explicit event "location_far" for b505330x6 with distance = distance;
 		}
 	}
+
+	rule is_nearby {
+		select when explicit nearby 
+			pre {
+				distance = event:attr("distance");
+			}
+			send_directive("test") with distance = distance;
+	}
 }
