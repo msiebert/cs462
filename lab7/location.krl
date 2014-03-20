@@ -51,7 +51,7 @@ ruleset lab7 {
 		}
 		if dist < 5 then
 		{
-			send_directive("nearby") with raised_event = "nearby" and latitutde = lata and longtitude = longa and distance = dist and lab = latb and lob = longb;	
+			send_directive("nearby") with raised_event = "nearby" and latitutde = lata and longtitude = longa and distance = dist and lab = latb and lob = longb and rlaa = rlata and rloa = rlonga and rlab = rlatb and rlob = rlongb;	
 		}
 		fired {
 			raise explicit event "location_nearby" for b505330x6 with distance = dist;
