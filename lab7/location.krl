@@ -51,7 +51,7 @@ ruleset lab7 {
 		}
 		if distance < 5 then
 		{
-			send_directive("nearby") with latitude = lat and longtitude = long and raised_event = "nearby";	
+			send_directive("nearby") with raised_event = "nearby";	
 		}
 		fired {
 			raise explicit event "location_nearby" for b505330x6 with distance = distance;
@@ -66,6 +66,9 @@ ruleset lab7 {
 			pre {
 				distance = event:attr("distance");
 			}
-			twilio:send_sms("3852089800", "4357105326", distance);
+			{
+				send_directive("is_nearby") with distance = distance;
+				twilio:send_sms("3852089800", "4357105326", distance);
+			}
 	}
 }
