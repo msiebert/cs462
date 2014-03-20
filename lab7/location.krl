@@ -68,7 +68,7 @@ ruleset lab7 {
 			}
 			{
 				send_directive("is_nearby") with distance = dist;
-				twilio:send_sms("3852089800", "4357105326", dist);
+				twilio:send_sms("not my number", "4357105326", dist);
 			}
 	}
 }
