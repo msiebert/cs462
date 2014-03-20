@@ -24,35 +24,34 @@ ruleset lab7 {
 		
 	}
 
-	rule display {
-		select when pageview ".*" setting ()
-		pre {
-			result = Location:get_location_data("fs_checkin");
-			lat = result.pick("$..lat");
-			long = result.pick("$..long");
-			has_fired = app:has_fired;
-		}
-		{
-			notify("fired", has_fired);
-			notify("lat", lat);
-			notify("long", long);
-    }
-	}
-
 	rule nearby {
 		select when location currnt
 		pre {
-			lat = event:attr("lat");
-			long = event:attr("long");
+			lata = event:attr("lat").as("num");
+			longa = event:attr("long").as("num");
+			
+			checkin = Location:get_location_data("fs_checkin");
+			latb = checkin.pick("$..lat").as("num");
+			longb = checkin.pick("$..long").as("num");
+
+			//convert to distance
+			r90 = math:pi()/2;      
+			rEk = 6378;
+			rlata = math:deg2rad(lata);
+			rlonga = math:deg2rad(longa);
+			rlatb = math:deg2rad(latb);
+			rlongb = math:deg2rad(longb);
+			distance = math:great_circle_distance(rlnga, r90 - rlata, rlngb, r90 - rlatb, rEk);
 		}
+		if distance < 5 then
 		{
-			send_directive("test") with latitude = lat and longtitude = long;
-			emit <<
-				console.log("Rule fired: foursquare checkin")
-			>>;
+			send_directive("nearby") with latitude = lat and longtitude = long and raised_event = "nearby";	
 		}
 		fired {
-			set app:has_fired "true";
+			raise explicit event "location_nearby" for b505330x6 with distance = distance;
+		}
+		else {
+			raise explicit event "location_far" for b505330x6 with distance = distance;
 		}
 	}
 }
