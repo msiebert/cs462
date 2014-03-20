@@ -44,10 +44,10 @@ ruleset lab7 {
 			r90 = math:pi()/2;      
 			rEk = 6378;
 			rlata = math:deg2rad(lata);
-			rlonga = math:deg2rad(longa);
-			rlatb = math:deg2rad(latb);
-			rlongb = math:deg2rad(longb);
-			_distance = math:great_circle_dist(rlnga, r90 - rlata, rlngb, r90 - rlatb, rEk);
+      rlnga = math:deg2rad(lnga);
+      rlatb = math:deg2rad(latb);
+      rlngb = math:deg2rad(lngb);
+      distance = math:great_circle_distance(rlnga,r90 - rlata, rlngb,r90 - rlatb, rEk);
 		}
 		if _distance < 5 then
 		{
