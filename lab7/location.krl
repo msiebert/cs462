@@ -11,6 +11,12 @@ ruleset lab7 {
 		author "mark.jiali.siebert"
 		logging on
 
+		key twilio {
+        "account_sid" : "ACd1655120780a9b18401cef8b7a3389b0",
+        "auth_token"  : "7ad6a0e2fdbead92cf24a048e732a740"
+    }
+
+    use module a8x115 alias twilio with twiliokeys = keys:twilio()
 		use module b505330x4 alias Location
 		use module a169x701 alias CloudRain
     use module a41x196  alias SquareTag
@@ -56,10 +62,10 @@ ruleset lab7 {
 	}
 
 	rule is_nearby {
-		select when explicit nearby 
+		select when explicit location_nearby 
 			pre {
 				distance = event:attr("distance");
 			}
-			send_directive("test") with distance = distance;
+			twilio:send_sms("3852089800", "4357105326", distance);
 	}
 }
