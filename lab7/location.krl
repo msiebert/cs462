@@ -42,22 +42,22 @@ ruleset lab7 {
 
 			//convert to distance
 			r90 = math:pi()/2;      
-			rEk = 3963.1676;
+			rEk = 6378;
 			rlata = math:deg2rad(lata);
 			rlonga = math:deg2rad(longa);
 			rlatb = math:deg2rad(latb);
 			rlongb = math:deg2rad(longb);
-			dist = math:great_circle_dist(rlnga, r90 - rlata, rlngb, r90 - rlatb, rEk);
+			_distance = math:great_circle_dist(rlnga, r90 - rlata, rlngb, r90 - rlatb, rEk);
 		}
-		if dist < 5 then
+		if _distance < 5 then
 		{
-			send_directive("nearby") with raised_event = "nearby" and latitutde = lata and longtitude = longa and distance = dist and lab = latb and lob = longb and rlaa = rlata and rloa = rlonga and rlab = rlatb and rlob = rlongb;	
+			send_directive("nearby") with raised_event = "nearby" and latitutde = lata and longtitude = longa and distance = _distance and lab = latb and lob = longb and rlaa = rlata and rloa = rlonga and rlab = rlatb and rlob = rlongb;	
 		}
 		fired {
-			raise explicit event "location_nearby" for b505330x6 with distance = dist;
+			raise explicit event "location_nearby" for b505330x6 with distance = _distance;
 		}
 		else {
-			raise explicit event "location_far" for b505330x6 with distance = dist;
+			raise explicit event "location_far" for b505330x6 with distance = _distance;
 		}
 	}
 
