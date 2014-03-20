@@ -47,28 +47,28 @@ ruleset lab7 {
 			rlonga = math:deg2rad(longa);
 			rlatb = math:deg2rad(latb);
 			rlongb = math:deg2rad(longb);
-			distance = math:great_circle_distance(rlnga, r90 - rlata, rlngb, r90 - rlatb, rEk);
+			dist = math:great_circle_dist(rlnga, r90 - rlata, rlngb, r90 - rlatb, rEk);
 		}
-		if distance < 5 then
+		if dist < 5 then
 		{
 			send_directive("nearby") with raised_event = "nearby";	
 		}
 		fired {
-			raise explicit event "location_nearby" for b505330x6 with distance = distance;
+			raise explicit event "location_nearby" for b505330x6 with distance = dist;
 		}
 		else {
-			raise explicit event "location_far" for b505330x6 with distance = distance;
+			raise explicit event "location_far" for b505330x6 with distance = dist;
 		}
 	}
 
 	rule is_nearby {
 		select when explicit location_nearby 
 			pre {
-				distance = event:attr("distance");
+				dist = event:attr("distance");
 			}
 			{
-				send_directive("is_nearby") with distance = distance;
-				twilio:send_sms("3852089800", "4357105326", distance);
+				send_directive("is_nearby") with distance = dist;
+				twilio:send_sms("3852089800", "4357105326", dist);
 			}
 	}
 }
