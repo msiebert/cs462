@@ -42,7 +42,7 @@ ruleset lab7 {
 
 			//convert to distance
 			r90 = math:pi()/2;      
-			rEk = 6378;
+			rEk = 3963.1676;
 			rlata = math:deg2rad(lata);
 			rlonga = math:deg2rad(longa);
 			rlatb = math:deg2rad(latb);
