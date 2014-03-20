@@ -47,17 +47,17 @@ ruleset lab7 {
       rlnga = math:deg2rad(lnga);
       rlatb = math:deg2rad(latb);
       rlngb = math:deg2rad(lngb);
-      distance = math:great_circle_distance(rlnga,r90 - rlata, rlngb,r90 - rlatb, rEk);
+      dist = math:great_circle_distance(rlnga,r90 - rlata, rlngb,r90 - rlatb, rEk);
 		}
-		if _distance < 5 then
+		if dist < 5 then
 		{
-			send_directive("nearby") with raised_event = "nearby" and latitutde = lata and longtitude = longa and distance = _distance and lab = latb and lob = longb and rlaa = rlata and rloa = rlonga and rlab = rlatb and rlob = rlongb;	
+			send_directive("nearby") with raised_event = "nearby" and latitutde = lata and longtitude = longa and distance = dist and lab = latb and lob = longb and rlaa = rlata and rloa = rlonga and rlab = rlatb and rlob = rlongb;	
 		}
 		fired {
-			raise explicit event "location_nearby" for b505330x6 with distance = _distance;
+			raise explicit event "location_nearby" for b505330x6 with distance = dist;
 		}
 		else {
-			raise explicit event "location_far" for b505330x6 with distance = _distance;
+			raise explicit event "location_far" for b505330x6 with distance = dist;
 		}
 	}
 
