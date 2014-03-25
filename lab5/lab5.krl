@@ -16,7 +16,36 @@ ruleset foursquare {
 	}
 
 	global {
-		
+		subscription_map = [{
+			"cid": "25751E74-B43E-11E3-85E2-4D98E71C24E1"
+		}, {
+			"cid": "5788719A-B43E-11E3-AF69-4D98E71C24E1"
+		}];	
+	}
+
+	rule process_fs_checkin_for_pico {
+		select when foursquare checkin
+		foreach subscription_map setting(subscription)
+		pre {
+			response = event:attr("checkin");
+			venue = response.decode().pick("$.venue.name").as("str");
+			city = response.decode().pick("$.venue..city").as("str");
+			shout = response.decode().pick("$.shout").as("str");
+			createdAt = response.decode().pick("$.createdAt").as("str");
+			lat = response.decode().pick("$.venue.location.lat").as("num");
+			long = response.decode().pick("$.venue.location.lng").as("num");
+		} 
+		{
+			send_directive(venue) with checkin = venue and subs = subscription;
+			event:send(subscription, "location", "notification") with attrs = {
+				"venue":venue,
+				"city": city,
+				"shout": shout,
+				"createdAt": createdAt,
+				"lat": lat,
+				"long": long
+			};
+		}
 	}
 
 	rule process_fs_checkin {
